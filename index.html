@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inkbit News</title>
-<meta name="description" content="The newspaper of the Inkbit Kingdom: news, stories and events from Inkbit Apes, Press Cards, Inkbit World, Inkbit Pets and Inkbit Zombie Punks.">
+<meta name="description" content="The newspaper of the Inkbit Kingdom: news, stories and events from Inkbit Apes, Press Cards, Inkbit World, Inkbit Pets, Inkbit Zombie Punks and Inkbit Wild Ones.">
 <meta property="og:title" content="Inkbit News">
 <meta property="og:description" content="News, stories and events from the Inkbit Kingdom.">
 <meta property="og:image" content="img/zombie-banner.jpg">
@@ -168,7 +168,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
     <p>The only newspaper of the Inkbit Kingdom</p>
   </header>
   <nav>
-    <a href="#map">Kingdom Map</a><a href="#apes">Inkbit Apes</a><a href="#cards">Press Cards</a><a href="#world">Inkbit World</a><a href="#pets">Inkbit Pets</a><a href="#zombies">Zombie Punks</a><a href="#rewards">Holder Rewards</a><a href="#story">The Story</a><a href="#events">Events</a>
+    <a href="#map">Kingdom Map</a><a href="#apes">Inkbit Apes</a><a href="#cards">Press Cards</a><a href="#world">Inkbit World</a><a href="#pets">Inkbit Pets</a><a href="#zombies">Zombie Punks</a><a href="#wild">Wild Ones</a><a href="#rewards">Holder Rewards</a><a href="#story">The Story</a><a href="#events">Events</a>
   </nav>
 </div>
 
@@ -177,6 +177,36 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
 </div>
 
 <main class="wrap">
+
+  <!-- SECOND STORY: WILD ONES -->
+  <article class="lead" id="wildlead">
+    <div>
+      <div class="kicker">Discovered · The Uncharted Isle</div>
+      <h2>An island nobody finished drawing. 4,444 Wild Ones live there.</h2>
+      <p class="dek">Before the printer, there was ink, and the Wild Ones made it first. Ten tribes, one Supreme Chief, and a recipe the whole Kingdom may soon need.</p>
+      <figure>
+        <img src="img/wild-banner.jpg" alt="Inkbit Wild Ones banner: The Ten Tribes of the First Ink">
+        <figcaption>Ten tribes of the First Ink, as sketched by the first explorer to come back.</figcaption>
+      </figure>
+    </div>
+    <aside class="side">
+      <div class="kicker" id="wildState">Free mint</div>
+      <div class="count" aria-live="polite">
+        <div><b id="wd-d">--</b><small>DAYS</small></div>
+        <div><b id="wd-h">--</b><small>HRS</small></div>
+        <div><b id="wd-m">--</b><small>MIN</small></div>
+        <div><b id="wd-s">--</b><small>SEC</small></div>
+      </div>
+      <div class="when">Oct 27, 20:00 → Oct 30, 19:00 (GMT+7)</div>
+      <a class="btn" data-link="wild" href="#" target="_blank" rel="noopener">Inkbit Wild Ones on OpenSea</a>
+      <ul class="facts">
+        <li><span>Supply</span><b>4,444</b></li>
+        <li><span>Price</span><b>Free</b></li>
+        <li><span>Limit</span><b>3 per wallet</b></li>
+        <li><span>Reveal</span><b>After mint closes</b></li>
+      </ul>
+    </aside>
+  </article>
 
   <!-- LEAD STORY -->
   <article class="lead" id="lead">
@@ -212,8 +242,8 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
   <section id="map">
     <div class="sh"><h3>THE KINGDOM MAP</h3><span>Where every Inkbit character lives</span></div>
     <figure class="worldmap">
-      <img src="img/kingdom-map.png" alt="Pixel map of the Inkbit World: 1 Apepixel City (Inkbit Apes and Press Cards), 2 the Harbour Garage, 3 the Capital (Inkbit World), 4 the Pet Meadows (Inkbit Pets), 5 the Danger Zone (Zombie Punks), 6 an uncharted island">
-      <figcaption>The Inkbit World, as surveyed by Inkbit News. Island 6 has not been charted yet.</figcaption>
+      <img src="img/kingdom-map.png" alt="Pixel map of the Inkbit World: 1 Apepixel City (Inkbit Apes and Press Cards), 2 the Harbour Garage, 3 the Capital (Inkbit World), 4 the Pet Meadows (Inkbit Pets), 5 the Danger Zone (Zombie Punks), 6 the Uncharted Isle (Inkbit Wild Ones)">
+      <figcaption>The Inkbit World, as surveyed by Inkbit News. The Uncharted Isle was added to the map in October 2026.</figcaption>
     </figure>
     <div class="map">
       <a class="district hq" href="#apes">
@@ -243,6 +273,13 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
         <p>3,333 Zombie Punks sealed behind hazard tape after the Inkrot outbreak.</p>
         <div class="tiles"><img src="img/zombie-1.png" alt=""><img src="img/zombie-5.png" alt=""><img src="img/zombie-9.png" alt=""><img src="img/zombie-12.png" alt=""></div>
         <span class="status" data-status="zombies"></span>
+      </a>
+      <a class="district hq" href="#wild">
+        <span class="tag">District 6 · The Uncharted Isle, far east of the map</span>
+        <h4>Inkbit Wild Ones</h4>
+        <p>4,444 tribespeople in ten tribes, living among volcanoes, caves and campfires. They made the very first ink.</p>
+        <div class="tiles"><img src="img/wild-1.png" alt=""><img src="img/wild-2.png" alt=""><img src="img/wild-4.png" alt=""><img src="img/wild-5.png" alt=""><img src="img/wild-6.png" alt=""><img src="img/wild-7.png" alt=""><img src="img/wild-8.png" alt=""><img src="img/wild-9.png" alt=""></div>
+        <span class="status" data-status="wild"></span>
       </a>
     </div>
   </section>
@@ -346,6 +383,27 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
         <div class="btns"><a class="btn" data-link="zombies" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
       </div>
     </div>
+
+    <div class="coll" id="wild">
+      <div class="grid">
+        <img src="img/wild-supreme.png" alt="The First Flame, Supreme Chief"><img src="img/wild-chief-1.png" alt="Chief of the Ash Tribe"><img src="img/wild-chief-3.png" alt="Chief of the River Tribe"><img src="img/wild-chief-7.png" alt="Chief of the Ember Tribe">
+        <img src="img/wild-10.png" alt="Inkbit Wild One"><img src="img/wild-11.png" alt="Inkbit Wild One"><img src="img/wild-12.png" alt="Inkbit Wild One"><img src="img/wild-3.png" alt="Inkbit Wild One">
+      </div>
+      <div>
+        <span class="status" data-status="wild"></span>
+        <h4>Inkbit Wild Ones</h4>
+        <p>4,444 head-only pixel tribespeople from the Uncharted Isle, built from 30 layers and 1,800 hand-drawn parts. Every Wild One belongs to one of ten tribes: Ash, Stone, River, Antler, Tusk, Moss, Ember, Bone, Moon and Thunder.</p>
+        <table class="tiers">
+          <tr><td><span class="dot" style="background:var(--gold)"></span>Supreme Chief · The First Flame</td><td>1</td></tr>
+          <tr><td><span class="dot" style="background:var(--red)"></span>Tribe Chiefs</td><td>10</td></tr>
+          <tr><td><span class="dot" style="background:#b06ad8"></span>Tribe Advisors · Elders &amp; Seers</td><td>20</td></tr>
+          <tr><td><span class="dot" style="background:var(--paper2)"></span>Tribe Council</td><td>100</td></tr>
+          <tr><td><span class="dot" style="background:#e8862a"></span>Band Leaders</td><td>400</td></tr>
+          <tr><td><span class="dot" style="background:var(--toxic)"></span>The Tribe · Warrior → Villager</td><td>3,913</td></tr>
+        </table>
+        <div class="btns"><a class="btn" data-link="wild" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
   </section>
 
   <!-- REWARDS -->
@@ -407,10 +465,15 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
         <h5>The quarantine breaks</h5>
         <p>The infected were sealed behind hazard tape at the edge of the map, in a district renamed the Danger Zone. On October 30 the tape gives way. Who walks out, and at what stage of infection, will only be known after the reveal.</p>
       </div>
-      <div class="ch tbc">
+      <div class="ch">
         <div class="no">CHAPTER 07</div>
-        <h5>Is anyone printing a cure?</h5>
-        <p>Rumours say the old printer has been running again at night. The Ink Chemist hasn't been seen in days. Holders across the Kingdom will be the first to read it here. To be continued.</p>
+        <h5>The island at the edge of the map</h5>
+        <p>Far east, past the Danger Zone, lies an island no map-maker ever finished. Long before 1999, its people ground charcoal, red clay, berries and bone into the First Ink. Ten tribes, each keeping one colour. They call themselves the Wild Ones.</p>
+      </div>
+      <div class="ch tbc">
+        <div class="no">CHAPTER 08</div>
+        <h5>Is anyone mixing a cure?</h5>
+        <p>The Ink Chemist has gone missing. Some say she sailed east to find Pure Ink, the recipe only the First Flame knows and the one thing that could cure Inkrot. The Wild Ones have never let an outsider onto their island. Until now. To be continued.</p>
       </div>
     </div>
   </section>
@@ -426,7 +489,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
 <footer class="wrap">
   <div class="notice"><b>Public notice.</b> Inkbit will never DM you to "verify" or "sync" your wallet, and never asks for a seed phrase. Only mint from the official OpenSea links on this page.</div>
   <div class="foot">
-    <div><a data-link="x" href="#" target="_blank" rel="noopener">X @InkbitApes</a><a data-link="apes" href="#" target="_blank" rel="noopener">Inkbit Apes</a><a data-link="cards" href="#" target="_blank" rel="noopener">Press Cards</a><a data-link="world" href="#" target="_blank" rel="noopener">Inkbit World</a><a data-link="pets" href="#" target="_blank" rel="noopener">Inkbit Pets</a><a data-link="zombies" href="#" target="_blank" rel="noopener">Zombie Punks</a></div>
+    <div><a data-link="x" href="#" target="_blank" rel="noopener">X @InkbitApes</a><a data-link="apes" href="#" target="_blank" rel="noopener">Inkbit Apes</a><a data-link="cards" href="#" target="_blank" rel="noopener">Press Cards</a><a data-link="world" href="#" target="_blank" rel="noopener">Inkbit World</a><a data-link="pets" href="#" target="_blank" rel="noopener">Inkbit Pets</a><a data-link="zombies" href="#" target="_blank" rel="noopener">Zombie Punks</a><a data-link="wild" href="#" target="_blank" rel="noopener">Wild Ones</a></div>
     <div>© Inkbit Kingdom · Inkbit News</div>
   </div>
 </footer>
@@ -439,7 +502,8 @@ const LINKS = {
   cards:   "https://opensea.io/collection/inkbit-press-cards",
   world:   "",
   pets:    "",
-  zombies: ""
+  zombies: "",
+  wild:    ""
 };
 /* Mint windows (GMT+7). Set start to "" if the date isn't announced yet. */
 const DROPS = {
@@ -447,9 +511,12 @@ const DROPS = {
   cards:   { label: "Minted out" },   // fixed label (no dates)
   world:   { start: "",                          end: "" },
   pets:    { start: "2026-10-26T21:15:00+07:00", end: "2026-10-27T21:15:00+07:00" },
-  zombies: { start: "2026-10-30T20:00:00+07:00", end: "2026-11-06T20:00:00+07:00" }
+  zombies: { start: "2026-10-30T20:00:00+07:00", end: "2026-11-06T20:00:00+07:00" },
+  wild:    { start: "2026-10-27T20:00:00+07:00", end: "2026-10-30T19:00:00+07:00" }
 };
 const EVENTS = [
+  { d: "2026-10-27T20:00:00+07:00", t: "Inkbit Wild Ones mint opens", s: "Free · 3 per wallet · 4,444 tribespeople" },
+  { d: "2026-10-30T19:00:00+07:00", t: "Inkbit Wild Ones mint closes", s: "Tribe and rank revealed after mint" },
   { d: "2026-10-29T23:59:00+07:00", t: "Inkbit Apes mint closes", s: "Apes and Press Cards revealed after the mint · hunt the 11 Misprints" },
   { d: "", t: "Ape Giveaway · Round 1 snapshot", s: "When Inkbit Apes hits 80% minted · hold 1 card + 2 apes" },
   { d: "", t: "Inkbit Garage crate snapshot", s: "Date announced in advance · hold 3 cards + 5 apes" },
@@ -493,6 +560,7 @@ const ev = document.getElementById("eventList");
 });
 
 const news = [
+  "<b>DISCOVERED</b> The Uncharted Isle · 4,444 Wild Ones in ten tribes · free mint Oct 27 20:00",
   "<b>APEPIXEL CITY</b> Inkbit Apes still printing · mint closes Oct 29 · 11 Misprints hiding in the stack",
   "<b>PRESS CARDS</b> 555 free cards minted out in ~20 minutes",
   "<b>REWARDS</b> Hold 1 Press Card + 2 Apes for the Round 1 Ape Giveaway",
@@ -503,6 +571,19 @@ const news = [
   "<b>NOTICE</b> Inkbit never DMs you to verify your wallet"
 ].map(s=>`<span>${s}</span>`).join("");
 document.getElementById("ticker").innerHTML = news + news;
+
+function wildTick(){
+  const w = DROPS.wild, s = new Date(w.start), e = new Date(w.end), t = now();
+  let target = s, label = "Free mint opens in";
+  if(t >= s && t < e){ target = e; label = "Minting now · closes in"; }
+  const el = document.getElementById("wildState");
+  if(t >= e){ el.textContent = "Mint closed · reveal soon"; ["d","h","m","s"].forEach(k=>document.getElementById("wd-"+k).textContent="00"); return; }
+  el.textContent = label;
+  let r = Math.max(0, target - t) / 1000; const p = n => String(Math.floor(n)).padStart(2,"0");
+  document.getElementById("wd-d").textContent = p(r/86400); document.getElementById("wd-h").textContent = p(r%86400/3600);
+  document.getElementById("wd-m").textContent = p(r%3600/60); document.getElementById("wd-s").textContent = p(r%60);
+}
+wildTick(); setInterval(wildTick,1000);
 
 function tick(){
   const z = DROPS.zombies, s = new Date(z.start), e = new Date(z.end), t = now();
