@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inkbit News</title>
-<meta name="description" content="The newspaper of the Inkbit Kingdom: news, stories and events from Inkbit World, Inkbit Pets and Inkbit Zombie Punks.">
+<meta name="description" content="The newspaper of the Inkbit Kingdom: news, stories and events from Inkbit Apes, Press Cards, Inkbit World, Inkbit Pets and Inkbit Zombie Punks.">
 <meta property="og:title" content="Inkbit News">
 <meta property="og:description" content="News, stories and events from the Inkbit Kingdom.">
 <meta property="og:image" content="img/zombie-banner.jpg">
@@ -76,10 +76,24 @@ section{padding:34px 0;border-bottom:1px solid var(--rule)}
 .sh span{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2)}
 
 /* map */
-.map{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}
-.district{padding:20px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:12px;text-decoration:none}
-.district:last-child{border-right:0}
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink)}
+.district{padding:20px;background:var(--paper);display:flex;flex-direction:column;gap:12px;text-decoration:none}
 .district:hover{background:var(--paper2)}
+.district.hq{grid-column:1/-1;background:var(--ink);color:var(--paper)}
+.district.hq p{color:#cfc6b2}
+.district.hq:hover{background:#2a251e}
+.district.hq .tiles{grid-template-columns:repeat(8,1fr)}
+.district.hq .tiles img{border-color:var(--paper)}
+.worldmap{margin:0 0 26px}
+.worldmap img{width:100%;border:3px solid var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-self:start}
+.cards img{width:100%;image-rendering:auto}
+.rewards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.reward{border:2px solid var(--ink);padding:20px;display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;background:var(--paper)}
+.reward img{width:110px;image-rendering:auto}
+.reward h5{font-size:24px;margin:4px 0 6px;font-weight:800;line-height:1.15}
+.reward p{margin:0 0 8px;font-size:16px}
+.reward .rule{font-family:var(--mono);font-size:13px;background:var(--paper2);border-left:4px solid var(--toxic);padding:8px 10px;margin:8px 0}
 .district .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .district h4{font-size:28px;margin:0;line-height:1.05;font-weight:800}
 .district p{margin:0;font-size:16px;color:var(--ink2)}
@@ -135,8 +149,11 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
   .coll.flip > :first-child{order:0}
   .side{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:20px}
   .map{grid-template-columns:1fr}
-  .district{border-right:0;border-bottom:2px solid var(--ink)}
-  .district:last-child{border-bottom:0}
+  .district.hq .tiles{grid-template-columns:repeat(4,1fr)}
+  .cards{grid-template-columns:repeat(5,1fr)}
+  .rewards{grid-template-columns:1fr}
+  .reward{grid-template-columns:80px 1fr}
+  .reward img{width:80px}
   .chapters{grid-template-columns:1fr}
   .events li{grid-template-columns:1fr;gap:6px}
 }
@@ -151,7 +168,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
     <p>The only newspaper of the Inkbit Kingdom</p>
   </header>
   <nav>
-    <a href="#map">Kingdom Map</a><a href="#world">Inkbit World</a><a href="#pets">Inkbit Pets</a><a href="#zombies">Zombie Punks</a><a href="#story">The Story</a><a href="#events">Events</a>
+    <a href="#map">Kingdom Map</a><a href="#apes">Inkbit Apes</a><a href="#cards">Press Cards</a><a href="#world">Inkbit World</a><a href="#pets">Inkbit Pets</a><a href="#zombies">Zombie Punks</a><a href="#rewards">Holder Rewards</a><a href="#story">The Story</a><a href="#events">Events</a>
   </nav>
 </div>
 
@@ -193,24 +210,35 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
 
   <!-- MAP -->
   <section id="map">
-    <div class="sh"><h3>THE KINGDOM MAP</h3><span>Three districts · one universe</span></div>
+    <div class="sh"><h3>THE KINGDOM MAP</h3><span>Where every Inkbit character lives</span></div>
+    <figure class="worldmap">
+      <img src="img/kingdom-map.png" alt="Pixel map of the Inkbit World: 1 Apepixel City (Inkbit Apes and Press Cards), 2 the Harbour Garage, 3 the Capital (Inkbit World), 4 the Pet Meadows (Inkbit Pets), 5 the Danger Zone (Zombie Punks), 6 an uncharted island">
+      <figcaption>The Inkbit World, as surveyed by Inkbit News. Island 6 has not been charted yet.</figcaption>
+    </figure>
     <div class="map">
+      <a class="district hq" href="#apes">
+        <span class="tag">District 1 · Ground Zero · A back-alley print shop, Apepixel City</span>
+        <h4>Inkbit Apes &amp; Press Cards</h4>
+        <p>The old dot-matrix printer that started everything. 1,111 apes walked off the paper on the last night of 1999, and the press still prints collectible cards for the Kingdom.</p>
+        <div class="tiles"><img src="img/apes-1.png" alt=""><img src="img/apes-2.png" alt=""><img src="img/apes-3.png" alt=""><img src="img/apes-4.png" alt=""><img src="img/apes-5.png" alt=""><img src="img/apes-6.png" alt=""><img src="img/apes-7.png" alt=""><img src="img/apes-8.png" alt=""></div>
+        <span class="status" data-status="apes"></span>
+      </a>
       <a class="district" href="#world">
-        <span class="tag">District I · The Capital</span>
+        <span class="tag">District 3 · The Capital</span>
         <h4>Inkbit World</h4>
         <p>2,468 citizens in the squares and streets, where every punk is drawn by hand.</p>
         <div class="tiles"><img src="img/world-1.png" alt=""><img src="img/world-2.png" alt=""><img src="img/world-3.png" alt=""><img src="img/world-4.png" alt=""></div>
         <span class="status" data-status="world"></span>
       </a>
       <a class="district" href="#pets">
-        <span class="tag">District II · The Homes</span>
+        <span class="tag">District 4 · The Pet Meadows</span>
         <h4>Inkbit Pets</h4>
         <p>9,999 cats, dogs, bears, tigers and rabbits who guard every home in the Kingdom.</p>
         <div class="tiles"><img class="smooth" src="img/pets-1.png" alt=""><img class="smooth" src="img/pets-3.png" alt=""><img class="smooth" src="img/pets-6.png" alt=""><img class="smooth" src="img/pets-8.png" alt=""></div>
         <span class="status" data-status="pets"></span>
       </a>
       <a class="district" href="#zombies">
-        <span class="tag">District III · Past the last streetlight</span>
+        <span class="tag">District 5 · Past the last streetlight</span>
         <h4>The Danger Zone</h4>
         <p>3,333 Zombie Punks sealed behind hazard tape after the Inkrot outbreak.</p>
         <div class="tiles"><img src="img/zombie-1.png" alt=""><img src="img/zombie-5.png" alt=""><img src="img/zombie-9.png" alt=""><img src="img/zombie-12.png" alt=""></div>
@@ -223,7 +251,45 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
   <section id="collections">
     <div class="sh"><h3>DISTRICT REPORTS</h3><span>Collections of the Kingdom</span></div>
 
-    <div class="coll" id="world">
+    <div class="coll" id="apes">
+      <div class="grid">
+        <img src="img/apes-1.png" alt="Inkbit Ape"><img src="img/apes-2.png" alt="Inkbit Ape"><img src="img/apes-3.png" alt="Inkbit Ape"><img src="img/apes-4.png" alt="Inkbit Ape">
+        <img src="img/apes-5.png" alt="Inkbit Ape"><img src="img/apes-6.png" alt="Inkbit Ape"><img src="img/apes-7.png" alt="Inkbit Ape"><img src="img/apes-8.png" alt="Inkbit Ape">
+      </div>
+      <div>
+        <span class="status" data-status="apes"></span>
+        <h4>Inkbit Apes</h4>
+        <p>The first collection, and the founders of the Kingdom. 1,111 pixel apes printed in ink by an old dot-matrix printer in Apepixel City, built from 330+ hand-designed traits across 9 layers. Eleven sheets came out wrong.</p>
+        <table class="tiers">
+          <tr><td><span class="dot" style="background:var(--red)"></span>The Misprints · true 1/1s</td><td>11</td></tr>
+          <tr><td><span class="dot" style="background:var(--paper)"></span>Inkbit Apes</td><td>1,100</td></tr>
+        </table>
+        <ul class="facts" style="margin:-6px 0 18px"><li><span>Price</span><b>0.0004 ETH</b></li><li><span>Limit</span><b>2 per wallet</b></li><li><span>Mint closes</span><b>Oct 29</b></li></ul>
+        <div class="btns"><a class="btn" data-link="apes" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
+
+    <div class="coll flip" id="cards">
+      <div class="cards">
+        <img src="img/card-01.webp" alt="Paper Boy card"><img src="img/card-02.webp" alt="Ink Runner card"><img src="img/card-03.webp" alt="Night Shift card"><img src="img/card-04.webp" alt="Typesetter card"><img src="img/card-05.webp" alt="Alley Courier card">
+        <img src="img/card-06.webp" alt="Press Operator card"><img src="img/card-07.webp" alt="Ink Chemist card"><img src="img/card-08.webp" alt="Head Printer card"><img src="img/card-09.webp" alt="The Fuse card"><img src="img/card-10.webp" alt="The Misprint card">
+      </div>
+      <div>
+        <span class="status" data-status="cards"></span>
+        <h4>Inkbit Press Cards</h4>
+        <p>Free collectible cards from the Inkbit print shop: 555 cards in 10 designs, minted out in about 20 minutes by 191 holders, from the Paper Boy to The Misprint. Holding cards is how you qualify for Kingdom rewards.</p>
+        <table class="tiers">
+          <tr><td><span class="dot" style="background:var(--gold)"></span>Legendary · The Misprint</td><td>7</td></tr>
+          <tr><td><span class="dot" style="background:#b06ad8"></span>Epic · The Fuse</td><td>18</td></tr>
+          <tr><td><span class="dot" style="background:var(--blue)"></span>Rare · 2 designs</td><td>65</td></tr>
+          <tr><td><span class="dot" style="background:var(--toxic)"></span>Uncommon · 3 designs</td><td>175</td></tr>
+          <tr><td><span class="dot" style="background:var(--paper)"></span>Common · 3 designs</td><td>290</td></tr>
+        </table>
+        <div class="btns"><a class="btn ghost" data-link="cards" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
+
+    <div class="coll flip" id="world">
       <div class="grid">
         <img src="img/world-1.png" alt="Inkbit World citizen"><img src="img/world-2.png" alt="Inkbit World citizen"><img src="img/world-3.png" alt="Inkbit World citizen"><img src="img/world-4.png" alt="Inkbit World citizen">
         <img src="img/world-5.png" alt="Inkbit World citizen"><img src="img/world-6.png" alt="Inkbit World citizen"><img src="img/world-7.png" alt="Inkbit World citizen"><img src="img/world-8.png" alt="Inkbit World citizen">
@@ -241,7 +307,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
       </div>
     </div>
 
-    <div class="coll flip" id="pets">
+    <div class="coll" id="pets">
       <div class="grid">
         <img class="smooth" src="img/pets-1.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-2.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-3.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-4.png" alt="Inkbit Pet">
         <img class="smooth" src="img/pets-5.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-6.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-7.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-8.png" alt="Inkbit Pet">
@@ -260,7 +326,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
       </div>
     </div>
 
-    <div class="coll" id="zombies">
+    <div class="coll flip" id="zombies">
       <div class="grid">
         <img src="img/zombie-1.png" alt="Inkbit Zombie Punk"><img src="img/zombie-2.png" alt="Inkbit Zombie Punk"><img src="img/zombie-3.png" alt="Inkbit Zombie Punk"><img src="img/zombie-4.png" alt="Inkbit Zombie Punk">
         <img src="img/zombie-5.png" alt="Inkbit Zombie Punk"><img src="img/zombie-6.png" alt="Inkbit Zombie Punk"><img src="img/zombie-7.png" alt="Inkbit Zombie Punk"><img src="img/zombie-8.png" alt="Inkbit Zombie Punk">
@@ -282,34 +348,69 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
     </div>
   </section>
 
+  <!-- REWARDS -->
+  <section id="rewards">
+    <div class="sh"><h3>HOLDER REWARDS</h3><span>From the Inkbit roadmap</span></div>
+    <div class="rewards">
+      <div class="reward">
+        <img src="img/pack.webp" alt="Sealed Inkbit pack">
+        <div>
+          <div class="kicker">Phase 3 · Ape Giveaway, Round 1</div>
+          <h5>50 free Inkbit Apes from the team vault</h5>
+          <div class="rule">Hold 1+ Press Card and 2+ Inkbit Apes at the snapshot</div>
+          <p>Snapshot is taken when Inkbit Apes reaches 80% minted (889 / 1,111). One Ape per wallet. Legendary card holders who qualify are guaranteed; other spots are drawn at random. Team wallets excluded.</p>
+        </div>
+      </div>
+      <div class="reward">
+        <img src="img/crate.webp" alt="Sealed Inkbit Garage crate">
+        <div>
+          <div class="kicker">Phase 4 · Inkbit Garage</div>
+          <h5>50 one-of-one pixel rides and homes</h5>
+          <div class="rule">Hold 3+ Press Cards and 5+ Inkbit Apes at the snapshot</div>
+          <p>20 Motorbikes, 15 Cars, 10 Houses and 5 Legendary pieces. Each qualifying wallet claims 1 sealed crate for free (gas only). Snapshot date is announced in advance. If more than 50 qualify, 50 are drawn at random.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- STORY -->
   <section id="story">
     <div class="sh"><h3>THE STORY SO FAR</h3><span>As reported by Inkbit News</span></div>
     <div class="chapters">
       <div class="ch">
         <div class="no">CHAPTER 01</div>
-        <h5>A kingdom drawn in ink</h5>
-        <p class="drop">Inkbit World was drawn one pixel at a time, by hand, in ink. Citizens filled the squares, and every face was different. The Kingdom had one rule: whatever is drawn here, lives here.</p>
+        <h5>The night the printer woke up</h5>
+        <p class="drop">Apepixel City, New Year's Eve, 1999. A power surge hit a tiny back-alley print shop and woke its old dot-matrix printer, and it began printing apes, pixel by pixel, in thick black ink. By the time the fuse blew, 1,111 sheets lay on the floor. Eleven came out wrong: the Misprints.</p>
       </div>
       <div class="ch">
         <div class="no">CHAPTER 02</div>
+        <h5>The press keeps running</h5>
+        <p>The apes kept the old press alive. It printed cards of the people who worked the shop, the Paper Boy, the Ink Chemist, the Head Printer, and one card nobody could explain: The Misprint. The cards became the Kingdom's tickets to rewards.</p>
+      </div>
+      <div class="ch">
+        <div class="no">CHAPTER 03</div>
+        <h5>A kingdom drawn in ink</h5>
+        <p>From the shop, the ink spread outward. Streets and squares were drawn, and 2,468 citizens moved into the Capital, Inkbit World. The Kingdom had one rule: whatever is drawn here, lives here.</p>
+      </div>
+      <div class="ch">
+        <div class="no">CHAPTER 04</div>
         <h5>The pets come home</h5>
         <p>Every home needed a guardian. Cats, dogs, bears, tigers and rabbits were drawn into the Pet District, and the wildest among them, a Golden Dragon, three Royals and nine Wild Legends, refused to stay in their baskets.</p>
       </div>
       <div class="ch">
-        <div class="no">CHAPTER 03</div>
-        <h5>Bad ink in the old print shop</h5>
-        <p>A bottle spilled in a print shop at the edge of the map. Wrong colour, wrong smell. Whoever was drawn with it turned green and grey, and their lines began to rot. The first three, Patient Zero, still glow in the dark.</p>
+        <div class="no">CHAPTER 05</div>
+        <h5>The last bottle of bad ink</h5>
+        <p>Deep in the print shop, one bottle had gone bad since that night in 1999. Wrong colour, wrong smell. When it finally spilled, whoever was drawn with it turned green and grey, and their lines began to rot. The city called it Inkrot.</p>
       </div>
       <div class="ch">
-        <div class="no">CHAPTER 04</div>
+        <div class="no">CHAPTER 06</div>
         <h5>The quarantine breaks</h5>
-        <p>The district was sealed behind hazard tape and renamed the Danger Zone. On October 30 the tape gives way. Who walks out, and at what stage of infection, will only be known after the reveal.</p>
+        <p>The infected were sealed behind hazard tape at the edge of the map, in a district renamed the Danger Zone. On October 30 the tape gives way. Who walks out, and at what stage of infection, will only be known after the reveal.</p>
       </div>
       <div class="ch tbc">
-        <div class="no">CHAPTER 05</div>
-        <h5>Is anyone drawing a cure?</h5>
-        <p>Rumours say an inkmaker in the Capital is mixing something new. Holders across the Kingdom will be the first to read it here. To be continued.</p>
+        <div class="no">CHAPTER 07</div>
+        <h5>Is anyone printing a cure?</h5>
+        <p>Rumours say the old printer has been running again at night. The Ink Chemist hasn't been seen in days. Holders across the Kingdom will be the first to read it here. To be continued.</p>
       </div>
     </div>
   </section>
@@ -325,7 +426,7 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
 <footer class="wrap">
   <div class="notice"><b>Public notice.</b> Inkbit will never DM you to "verify" or "sync" your wallet, and never asks for a seed phrase. Only mint from the official OpenSea links on this page.</div>
   <div class="foot">
-    <div><a data-link="x" href="#" target="_blank" rel="noopener">X @InkbitApes</a><a data-link="world" href="#" target="_blank" rel="noopener">Inkbit World</a><a data-link="pets" href="#" target="_blank" rel="noopener">Inkbit Pets</a><a data-link="zombies" href="#" target="_blank" rel="noopener">Zombie Punks</a></div>
+    <div><a data-link="x" href="#" target="_blank" rel="noopener">X @InkbitApes</a><a data-link="apes" href="#" target="_blank" rel="noopener">Inkbit Apes</a><a data-link="cards" href="#" target="_blank" rel="noopener">Press Cards</a><a data-link="world" href="#" target="_blank" rel="noopener">Inkbit World</a><a data-link="pets" href="#" target="_blank" rel="noopener">Inkbit Pets</a><a data-link="zombies" href="#" target="_blank" rel="noopener">Zombie Punks</a></div>
     <div>© Inkbit Kingdom · Inkbit News</div>
   </div>
 </footer>
@@ -334,17 +435,24 @@ footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
 /* ===== EDIT HERE: paste your OpenSea links (leave "" if not ready) ===== */
 const LINKS = {
   x:       "https://x.com/InkbitApes",
+  apes:    "https://opensea.io/collection/inkbit-apes",
+  cards:   "https://opensea.io/collection/inkbit-press-cards",
   world:   "",
   pets:    "",
   zombies: ""
 };
 /* Mint windows (GMT+7). Set start to "" if the date isn't announced yet. */
 const DROPS = {
+  apes:    { start: "2026-10-01T00:00:00+07:00", end: "2026-10-29T23:59:00+07:00" },  // check close time
+  cards:   { label: "Minted out" },   // fixed label (no dates)
   world:   { start: "",                          end: "" },
   pets:    { start: "2026-10-26T21:15:00+07:00", end: "2026-10-27T21:15:00+07:00" },
   zombies: { start: "2026-10-30T20:00:00+07:00", end: "2026-11-06T20:00:00+07:00" }
 };
 const EVENTS = [
+  { d: "2026-10-29T23:59:00+07:00", t: "Inkbit Apes mint closes", s: "Apes and Press Cards revealed after the mint · hunt the 11 Misprints" },
+  { d: "", t: "Ape Giveaway · Round 1 snapshot", s: "When Inkbit Apes hits 80% minted · hold 1 card + 2 apes" },
+  { d: "", t: "Inkbit Garage crate snapshot", s: "Date announced in advance · hold 3 cards + 5 apes" },
   { d: "2026-10-26T21:15:00+07:00", t: "Inkbit Pets mint opens", s: "Free · 5 per wallet · 24 hours" },
   { d: "2026-10-27T21:15:00+07:00", t: "Inkbit Pets mint closes", s: "Reveal follows on schedule" },
   { d: "2026-10-30T20:00:00+07:00", t: "The quarantine breaks", s: "Inkbit Zombie Punks mint opens · ≈ 3 THB · 10 per wallet" },
@@ -366,6 +474,7 @@ document.querySelectorAll("[data-link]").forEach(a=>{
 
 function stateOf(k){
   const w = DROPS[k], t = now();
+  if(w.label) return ["ended", w.label];
   if(!w.start) return ["soon","Coming soon"];
   const s = new Date(w.start), e = w.end ? new Date(w.end) : null;
   if(t < s) return ["next","Mint " + s.toLocaleDateString("en-GB",{timeZone:"Asia/Bangkok",day:"numeric",month:"short"})];
@@ -375,7 +484,7 @@ function stateOf(k){
 document.querySelectorAll("[data-status]").forEach(el=>{ const [c,l]=stateOf(el.dataset.status); el.classList.add(c); el.textContent=l; });
 
 const ev = document.getElementById("eventList");
-EVENTS.forEach(e=>{
+[...EVENTS].sort((x,y)=>(x.d?new Date(x.d):Infinity)-(y.d?new Date(y.d):Infinity)).forEach(e=>{
   const li = document.createElement("li");
   const d = e.d ? new Date(e.d) : null, past = d && d < now();
   li.innerHTML = `<span class="d">${d ? fmt(d) : "TBA"}</span><span class="t"><b></b><small></small></span><span class="status ${past?"ended":(d?"next":"soon")}">${past?"Done":(d?"Upcoming":"Soon")}</span>`;
@@ -384,6 +493,9 @@ EVENTS.forEach(e=>{
 });
 
 const news = [
+  "<b>APEPIXEL CITY</b> Inkbit Apes still printing · mint closes Oct 29 · 11 Misprints hiding in the stack",
+  "<b>PRESS CARDS</b> 555 free cards minted out in ~20 minutes",
+  "<b>REWARDS</b> Hold 1 Press Card + 2 Apes for the Round 1 Ape Giveaway",
   "<b>BREAKING</b> Quarantine of the Danger Zone to break Oct 30, 20:00",
   "<b>PETS</b> 9,999 Inkbit Pets move into the Pet District · reveal coming",
   "<b>OUTBREAK</b> Three cases of Patient Zero confirmed, Emerald, Crimson and Prism",
