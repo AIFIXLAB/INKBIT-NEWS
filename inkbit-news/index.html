@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inkbit News</title>
+<meta name="description" content="The newspaper of the Inkbit Kingdom: news, stories and events from Inkbit World, Inkbit Pets and Inkbit Zombie Punks.">
+<meta property="og:title" content="Inkbit News">
+<meta property="og:description" content="News, stories and events from the Inkbit Kingdom.">
+<meta property="og:image" content="img/zombie-banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/zombie-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdc; --paper2:#e9dfc8; --ink:#16130f; --ink2:#4a443a; --rule:#16130f;
+  --toxic:#7bd23a; --red:#d6362f; --gold:#d9a521; --blue:#2f6fd6;
+  --mono:'Space Mono',ui-monospace,monospace; --serif:'Newsreader',Georgia,serif; --px:'Press Start 2P',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55;
+  background-image:radial-gradient(rgba(22,19,15,.05) 1px,transparent 1px);background-size:4px 4px}
+img{display:block;max-width:100%;image-rendering:pixelated}
+img.smooth{image-rendering:auto}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* masthead */
+.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--rule)}
+.mast{text-align:center;padding:22px 0 14px;border-bottom:4px double var(--rule)}
+.mast h1{font-family:var(--px);font-size:clamp(30px,7.4vw,84px);margin:0;letter-spacing:.02em;line-height:1.05}
+.mast p{margin:10px 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 22px;padding:10px 0;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline}
+
+/* ticker */
+.ticker{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+.ticker .track{display:inline-block;padding:9px 0;animation:tick 40s linear infinite}
+.ticker b{color:var(--toxic)}
+.ticker span{margin:0 28px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* lead */
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700}
+.lead{display:grid;grid-template-columns:1.45fr 1fr;gap:32px;padding:30px 0;border-bottom:1px solid var(--rule)}
+.lead h2{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:8px 0 14px;font-weight:800;letter-spacing:-.01em}
+.lead .dek{font-size:21px;color:var(--ink2);margin:0 0 18px}
+.lead figure{margin:0}
+.lead figure img{width:100%;border:2px solid var(--ink)}
+figcaption{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:6px}
+.side{border-left:1px solid var(--rule);padding-left:28px}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 8px}
+.count div{background:var(--ink);color:var(--toxic);text-align:center;padding:12px 4px 10px;border:2px solid var(--ink)}
+.count b{display:block;font-family:var(--px);font-size:clamp(18px,2.6vw,26px)}
+.count small{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--paper)}
+.when{font-family:var(--mono);font-size:13px;margin:6px 0 16px}
+.btn{display:inline-block;font-family:var(--mono);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;
+  text-decoration:none;background:var(--ink);color:var(--paper);padding:12px 18px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--toxic)}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--toxic)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btn.off{opacity:.45;pointer-events:none}
+.facts{list-style:none;padding:0;margin:18px 0 0;font-family:var(--mono);font-size:13px}
+.facts li{display:flex;justify-content:space-between;border-top:1px dashed var(--ink2);padding:7px 0}
+
+/* sections */
+section{padding:34px 0;border-bottom:1px solid var(--rule)}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-bottom:22px}
+.sh h3{font-family:var(--px);font-size:clamp(16px,2.4vw,22px);margin:0;line-height:1.4}
+.sh span{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2)}
+
+/* map */
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}
+.district{padding:20px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:12px;text-decoration:none}
+.district:last-child{border-right:0}
+.district:hover{background:var(--paper2)}
+.district .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.district h4{font-size:28px;margin:0;line-height:1.05;font-weight:800}
+.district p{margin:0;font-size:16px;color:var(--ink2)}
+.district .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.district .tiles img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--ink)}
+.status{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1.5px solid var(--ink)}
+.status.live{background:var(--toxic)}
+.status.soon{background:var(--gold)}
+.status.ended{background:var(--paper2)}
+.status.next{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* collection features */
+.coll{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;padding:30px 0;border-bottom:1px dashed var(--ink2)}
+.coll:last-child{border-bottom:0}
+.coll.flip > :first-child{order:2}
+.coll h4{font-size:clamp(28px,3.6vw,40px);margin:6px 0 10px;line-height:1.05;font-weight:800}
+.coll p{margin:0 0 14px}
+.grid{align-self:start;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.grid img{width:100%;aspect-ratio:1;object-fit:cover;border:1.5px solid var(--ink)}
+.tiers{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin:6px 0 18px}
+.tiers td{border-top:1px solid var(--ink);padding:7px 4px}
+.tiers td:last-child{text-align:right;font-weight:700}
+.tiers tr:last-child td{border-bottom:1px solid var(--ink)}
+.dot{display:inline-block;width:10px;height:10px;margin-right:8px;border:1px solid var(--ink);vertical-align:-1px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* story */
+.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;column-rule:1px solid var(--ink)}
+.ch{padding:16px 0;border-top:1px solid var(--ink)}
+.ch .no{font-family:var(--px);font-size:11px;color:var(--red)}
+.ch h5{font-size:24px;margin:8px 0 6px;font-weight:800;line-height:1.15}
+.ch p{margin:0;font-size:17px}
+.ch.tbc h5{color:var(--ink2)}
+.drop:first-letter{float:left;font-family:var(--px);font-size:44px;line-height:1;padding:6px 10px 0 0}
+
+/* events */
+.events{list-style:none;margin:0;padding:0}
+.events li{display:grid;grid-template-columns:150px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--ink)}
+.events li:last-child{border-bottom:1px solid var(--ink)}
+.events .d{font-family:var(--mono);font-weight:700;font-size:14px}
+.events .t b{display:block;font-size:20px;line-height:1.2}
+.events .t small{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+
+/* footer */
+footer{padding:30px 0 50px;font-family:var(--mono);font-size:13px}
+.notice{border:2px solid var(--ink);padding:14px 16px;background:var(--paper2);margin-bottom:22px}
+.notice b{color:var(--red)}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.foot a{margin-right:16px}
+
+@media (max-width:860px){
+  .lead,.coll{grid-template-columns:1fr}
+  .coll.flip > :first-child{order:0}
+  .side{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:20px}
+  .map{grid-template-columns:1fr}
+  .district{border-right:0;border-bottom:2px solid var(--ink)}
+  .district:last-child{border-bottom:0}
+  .chapters{grid-template-columns:1fr}
+  .events li{grid-template-columns:1fr;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar"><span id="today">Inkbit Kingdom</span><span>Printed in ink · 24 × 24 pixels per story</span><span>Robinhood Chain</span></div>
+  <header class="mast">
+    <h1>INKBIT NEWS</h1>
+    <p>The only newspaper of the Inkbit Kingdom</p>
+  </header>
+  <nav>
+    <a href="#map">Kingdom Map</a><a href="#world">Inkbit World</a><a href="#pets">Inkbit Pets</a><a href="#zombies">Zombie Punks</a><a href="#story">The Story</a><a href="#events">Events</a>
+  </nav>
+</div>
+
+<div class="ticker" aria-label="Breaking news">
+  <div class="track" id="ticker"></div>
+</div>
+
+<main class="wrap">
+
+  <!-- LEAD STORY -->
+  <article class="lead" id="lead">
+    <div>
+      <div class="kicker">Breaking · The Danger Zone</div>
+      <h2>Quarantine to break on October 30. 3,333 infected inside.</h2>
+      <p class="dek">Bad ink spilled in an old print shop. Everyone drawn with it began to rot. The city calls it Inkrot, and the hazard tape won't hold much longer.</p>
+      <figure>
+        <img src="img/zombie-banner.jpg" alt="Inkbit Zombie Punks banner: The Danger Zone of Inkbit World">
+        <figcaption>The Danger Zone, last seen from the edge of the map.</figcaption>
+      </figure>
+    </div>
+    <aside class="side">
+      <div class="kicker" id="leadState">Quarantine breaks in</div>
+      <div class="count" id="countdown" aria-live="polite">
+        <div><b id="cd-d">--</b><small>DAYS</small></div>
+        <div><b id="cd-h">--</b><small>HRS</small></div>
+        <div><b id="cd-m">--</b><small>MIN</small></div>
+        <div><b id="cd-s">--</b><small>SEC</small></div>
+      </div>
+      <div class="when">Oct 30, 20:00 → Nov 6, 20:00 (GMT+7)</div>
+      <a class="btn" data-link="zombies" href="#" target="_blank" rel="noopener">Inkbit Zombie Punks on OpenSea</a>
+      <ul class="facts">
+        <li><span>Supply</span><b>3,333</b></li>
+        <li><span>Price</span><b>≈ 3 THB (0.000038 ETH)</b></li>
+        <li><span>Limit</span><b>10 per wallet</b></li>
+        <li><span>Reveal</span><b>After quarantine ends</b></li>
+      </ul>
+    </aside>
+  </article>
+
+  <!-- MAP -->
+  <section id="map">
+    <div class="sh"><h3>THE KINGDOM MAP</h3><span>Three districts · one universe</span></div>
+    <div class="map">
+      <a class="district" href="#world">
+        <span class="tag">District I · The Capital</span>
+        <h4>Inkbit World</h4>
+        <p>2,468 citizens in the squares and streets, where every punk is drawn by hand.</p>
+        <div class="tiles"><img src="img/world-1.png" alt=""><img src="img/world-2.png" alt=""><img src="img/world-3.png" alt=""><img src="img/world-4.png" alt=""></div>
+        <span class="status" data-status="world"></span>
+      </a>
+      <a class="district" href="#pets">
+        <span class="tag">District II · The Homes</span>
+        <h4>Inkbit Pets</h4>
+        <p>9,999 cats, dogs, bears, tigers and rabbits who guard every home in the Kingdom.</p>
+        <div class="tiles"><img class="smooth" src="img/pets-1.png" alt=""><img class="smooth" src="img/pets-3.png" alt=""><img class="smooth" src="img/pets-6.png" alt=""><img class="smooth" src="img/pets-8.png" alt=""></div>
+        <span class="status" data-status="pets"></span>
+      </a>
+      <a class="district" href="#zombies">
+        <span class="tag">District III · Past the last streetlight</span>
+        <h4>The Danger Zone</h4>
+        <p>3,333 Zombie Punks sealed behind hazard tape after the Inkrot outbreak.</p>
+        <div class="tiles"><img src="img/zombie-1.png" alt=""><img src="img/zombie-5.png" alt=""><img src="img/zombie-9.png" alt=""><img src="img/zombie-12.png" alt=""></div>
+        <span class="status" data-status="zombies"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="collections">
+    <div class="sh"><h3>DISTRICT REPORTS</h3><span>Collections of the Kingdom</span></div>
+
+    <div class="coll" id="world">
+      <div class="grid">
+        <img src="img/world-1.png" alt="Inkbit World citizen"><img src="img/world-2.png" alt="Inkbit World citizen"><img src="img/world-3.png" alt="Inkbit World citizen"><img src="img/world-4.png" alt="Inkbit World citizen">
+        <img src="img/world-5.png" alt="Inkbit World citizen"><img src="img/world-6.png" alt="Inkbit World citizen"><img src="img/world-7.png" alt="Inkbit World citizen"><img src="img/world-8.png" alt="Inkbit World citizen">
+      </div>
+      <div>
+        <span class="status" data-status="world"></span>
+        <h4>Inkbit World</h4>
+        <p>The capital of the Kingdom. 2,468 pixel punks built from 15 layers of hand-drawn parts in ten levels of rarity. Among them live 79 specials, drawn one by one.</p>
+        <table class="tiers">
+          <tr><td>Legend</td><td>1</td></tr>
+          <tr><td>Specials (3 · 5 · 10 · 20 · 40)</td><td>78</td></tr>
+          <tr><td>Citizens</td><td>2,389</td></tr>
+        </table>
+        <div class="btns"><a class="btn ghost" data-link="world" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
+
+    <div class="coll flip" id="pets">
+      <div class="grid">
+        <img class="smooth" src="img/pets-1.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-2.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-3.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-4.png" alt="Inkbit Pet">
+        <img class="smooth" src="img/pets-5.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-6.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-7.png" alt="Inkbit Pet"><img class="smooth" src="img/pets-8.png" alt="Inkbit Pet">
+      </div>
+      <div>
+        <span class="status" data-status="pets"></span>
+        <h4>Inkbit Pets</h4>
+        <p>9,999 full-body chibi pets: cats, dogs, bears, tigers and rabbits, each mixed from hats, clothes, held items, charms and scenes. Nine tiers, from Common to Mythic.</p>
+        <table class="tiers">
+          <tr><td><span class="dot" style="background:var(--gold)"></span>Mythic: the Golden Dragon</td><td>1</td></tr>
+          <tr><td><span class="dot" style="background:var(--blue)"></span>Royals</td><td>3</td></tr>
+          <tr><td><span class="dot" style="background:var(--toxic)"></span>Wild Legends</td><td>9</td></tr>
+          <tr><td><span class="dot" style="background:var(--paper)"></span>Pets across 9 tiers</td><td>9,986</td></tr>
+        </table>
+        <div class="btns"><a class="btn ghost" data-link="pets" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
+
+    <div class="coll" id="zombies">
+      <div class="grid">
+        <img src="img/zombie-1.png" alt="Inkbit Zombie Punk"><img src="img/zombie-2.png" alt="Inkbit Zombie Punk"><img src="img/zombie-3.png" alt="Inkbit Zombie Punk"><img src="img/zombie-4.png" alt="Inkbit Zombie Punk">
+        <img src="img/zombie-5.png" alt="Inkbit Zombie Punk"><img src="img/zombie-6.png" alt="Inkbit Zombie Punk"><img src="img/zombie-7.png" alt="Inkbit Zombie Punk"><img src="img/zombie-8.png" alt="Inkbit Zombie Punk">
+      </div>
+      <div>
+        <span class="status" data-status="zombies"></span>
+        <h4>Inkbit Zombie Punks</h4>
+        <p>3,333 infected pixel punks from the Danger Zone, with depth-shaded pixels and gloomy backdrops. Infection levels are written on-chain.</p>
+        <table class="tiers">
+          <tr><td><span class="dot" style="background:var(--red)"></span>Patient Zero</td><td>3</td></tr>
+          <tr><td><span class="dot" style="background:#e8862a"></span>Alpha Strain</td><td>6</td></tr>
+          <tr><td><span class="dot" style="background:#b06ad8"></span>Mutant</td><td>9</td></tr>
+          <tr><td><span class="dot" style="background:var(--gold)"></span>Horde Leader</td><td>99</td></tr>
+          <tr><td><span class="dot" style="background:var(--toxic)"></span>Infected Elite</td><td>199</td></tr>
+          <tr><td><span class="dot" style="background:var(--paper)"></span>Infected · 5 stages, Fresh Bite → Feral</td><td>3,017</td></tr>
+        </table>
+        <div class="btns"><a class="btn" data-link="zombies" href="#" target="_blank" rel="noopener">View on OpenSea</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="sh"><h3>THE STORY SO FAR</h3><span>As reported by Inkbit News</span></div>
+    <div class="chapters">
+      <div class="ch">
+        <div class="no">CHAPTER 01</div>
+        <h5>A kingdom drawn in ink</h5>
+        <p class="drop">Inkbit World was drawn one pixel at a time, by hand, in ink. Citizens filled the squares, and every face was different. The Kingdom had one rule: whatever is drawn here, lives here.</p>
+      </div>
+      <div class="ch">
+        <div class="no">CHAPTER 02</div>
+        <h5>The pets come home</h5>
+        <p>Every home needed a guardian. Cats, dogs, bears, tigers and rabbits were drawn into the Pet District, and the wildest among them, a Golden Dragon, three Royals and nine Wild Legends, refused to stay in their baskets.</p>
+      </div>
+      <div class="ch">
+        <div class="no">CHAPTER 03</div>
+        <h5>Bad ink in the old print shop</h5>
+        <p>A bottle spilled in a print shop at the edge of the map. Wrong colour, wrong smell. Whoever was drawn with it turned green and grey, and their lines began to rot. The first three, Patient Zero, still glow in the dark.</p>
+      </div>
+      <div class="ch">
+        <div class="no">CHAPTER 04</div>
+        <h5>The quarantine breaks</h5>
+        <p>The district was sealed behind hazard tape and renamed the Danger Zone. On October 30 the tape gives way. Who walks out, and at what stage of infection, will only be known after the reveal.</p>
+      </div>
+      <div class="ch tbc">
+        <div class="no">CHAPTER 05</div>
+        <h5>Is anyone drawing a cure?</h5>
+        <p>Rumours say an inkmaker in the Capital is mixing something new. Holders across the Kingdom will be the first to read it here. To be continued.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="sh"><h3>KINGDOM CALENDAR</h3><span>Times in GMT+7</span></div>
+    <ul class="events" id="eventList"></ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="notice"><b>Public notice.</b> Inkbit will never DM you to "verify" or "sync" your wallet, and never asks for a seed phrase. Only mint from the official OpenSea links on this page.</div>
+  <div class="foot">
+    <div><a data-link="x" href="#" target="_blank" rel="noopener">X @InkbitApes</a><a data-link="world" href="#" target="_blank" rel="noopener">Inkbit World</a><a data-link="pets" href="#" target="_blank" rel="noopener">Inkbit Pets</a><a data-link="zombies" href="#" target="_blank" rel="noopener">Zombie Punks</a></div>
+    <div>© Inkbit Kingdom · Inkbit News</div>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT HERE: paste your OpenSea links (leave "" if not ready) ===== */
+const LINKS = {
+  x:       "https://x.com/InkbitApes",
+  world:   "",
+  pets:    "",
+  zombies: ""
+};
+/* Mint windows (GMT+7). Set start to "" if the date isn't announced yet. */
+const DROPS = {
+  world:   { start: "",                          end: "" },
+  pets:    { start: "2026-10-26T21:15:00+07:00", end: "2026-10-27T21:15:00+07:00" },
+  zombies: { start: "2026-10-30T20:00:00+07:00", end: "2026-11-06T20:00:00+07:00" }
+};
+const EVENTS = [
+  { d: "2026-10-26T21:15:00+07:00", t: "Inkbit Pets mint opens", s: "Free · 5 per wallet · 24 hours" },
+  { d: "2026-10-27T21:15:00+07:00", t: "Inkbit Pets mint closes", s: "Reveal follows on schedule" },
+  { d: "2026-10-30T20:00:00+07:00", t: "The quarantine breaks", s: "Inkbit Zombie Punks mint opens · ≈ 3 THB · 10 per wallet" },
+  { d: "2026-11-06T20:00:00+07:00", t: "Zombie Punks mint closes", s: "Infection levels revealed after mint" },
+  { d: "", t: "Inkbit World opens its gates", s: "2,468 citizens of the Capital · date to be announced" }
+];
+/* ===================================================================== */
+
+const now = () => new Date();
+const fmt = d => d.toLocaleString("en-GB",{timeZone:"Asia/Bangkok",day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+
+document.getElementById("today").textContent =
+  now().toLocaleDateString("en-GB",{timeZone:"Asia/Bangkok",weekday:"long",day:"numeric",month:"long",year:"numeric"});
+
+document.querySelectorAll("[data-link]").forEach(a=>{
+  const u = LINKS[a.dataset.link];
+  if(u){ a.href = u; } else { a.classList.add("off"); a.removeAttribute("target"); if(a.classList.contains("btn")) a.textContent = "OpenSea link soon"; }
+});
+
+function stateOf(k){
+  const w = DROPS[k], t = now();
+  if(!w.start) return ["soon","Coming soon"];
+  const s = new Date(w.start), e = w.end ? new Date(w.end) : null;
+  if(t < s) return ["next","Mint " + s.toLocaleDateString("en-GB",{timeZone:"Asia/Bangkok",day:"numeric",month:"short"})];
+  if(!e || t < e) return ["live","Minting now"];
+  return ["ended","Mint ended"];
+}
+document.querySelectorAll("[data-status]").forEach(el=>{ const [c,l]=stateOf(el.dataset.status); el.classList.add(c); el.textContent=l; });
+
+const ev = document.getElementById("eventList");
+EVENTS.forEach(e=>{
+  const li = document.createElement("li");
+  const d = e.d ? new Date(e.d) : null, past = d && d < now();
+  li.innerHTML = `<span class="d">${d ? fmt(d) : "TBA"}</span><span class="t"><b></b><small></small></span><span class="status ${past?"ended":(d?"next":"soon")}">${past?"Done":(d?"Upcoming":"Soon")}</span>`;
+  li.querySelector("b").textContent = e.t; li.querySelector("small").textContent = e.s;
+  ev.appendChild(li);
+});
+
+const news = [
+  "<b>BREAKING</b> Quarantine of the Danger Zone to break Oct 30, 20:00",
+  "<b>PETS</b> 9,999 Inkbit Pets move into the Pet District · reveal coming",
+  "<b>OUTBREAK</b> Three cases of Patient Zero confirmed, Emerald, Crimson and Prism",
+  "<b>CAPITAL</b> Inkbit World prepares to open its gates to 2,468 citizens",
+  "<b>NOTICE</b> Inkbit never DMs you to verify your wallet"
+].map(s=>`<span>${s}</span>`).join("");
+document.getElementById("ticker").innerHTML = news + news;
+
+function tick(){
+  const z = DROPS.zombies, s = new Date(z.start), e = new Date(z.end), t = now();
+  let target = s, label = "Quarantine breaks in";
+  if(t >= s && t < e){ target = e; label = "Quarantine open · closes in"; }
+  if(t >= e){ document.getElementById("leadState").textContent = "The quarantine has ended"; ["d","h","m","s"].forEach(k=>document.getElementById("cd-"+k).textContent="00"); return; }
+  document.getElementById("leadState").textContent = label;
+  let r = Math.max(0, target - t) / 1000;
+  const p = n => String(Math.floor(n)).padStart(2,"0");
+  document.getElementById("cd-d").textContent = p(r/86400);
+  document.getElementById("cd-h").textContent = p(r%86400/3600);
+  document.getElementById("cd-m").textContent = p(r%3600/60);
+  document.getElementById("cd-s").textContent = p(r%60);
+}
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
