@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom Board · Inkbit News</title>
+<meta name="description" content="Talk with the Inkbit community: ideas, questions and stories from every corner of the Kingdom.">
+<meta property="og:title" content="Kingdom Board · Inkbit News"><meta property="og:description" content="Talk with the Inkbit community: ideas, questions and stories from every corner of the Kingdom."><meta property="og:image" content="img/news-12.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/brokers-tile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><span id="today">Inkbit Kingdom</span><span>Printed in ink · 24 × 24 pixels per story</span><span>Robinhood Chain</span></div>
+  <header class="mast small"><a href="index.html"><h1>INKBIT NEWS</h1></a><p>The only newspaper of the Inkbit Kingdom</p></header>
+  <nav><a href="index.html">Front Page</a><a href="apes.html">Apes</a><a href="cards.html">Press Cards</a><a href="world.html">World</a><a href="pets.html">Pets</a><a href="zombies.html">Zombie Punks</a><a href="wild.html">Wild Ones</a><a href="brokers.html">Brokers</a><a href="rank.html">Rankings</a><a href="board.html" class=on>Board</a></nav>
+</div>
+<div class="ticker" aria-label="Breaking news"><div class="track"><span><b>UNCHARTED ISLE</b> All 4,444 Wild Ones claimed · trading posts busy</span><span><b>THE CAPITAL</b> All 2,468 citizens moved in overnight</span><span><b>NEW</b> Rankings and the Kingdom Board are open</span><span><b>INK STREET</b> The Inkbit Exchange is hiring 7,777 brokers until Oct 31, 12:00</span><span><b>PET MEADOWS</b> The first pets change hands</span><span><b>MARKET</b> A Whale was seen scooping the dip with a spoon</span><span><b>PET MEADOWS</b> Census closes at 5,983 · one Golden Dragon registered</span><span><b>UNCHARTED ISLE</b> 4,444 Wild Ones · ten tribes · the First Ink</span><span><b>DANGER ZONE</b> Quarantine breaks Oct 30, 20:00</span><span><b>APEPIXEL CITY</b> 11 Misprints still hiding in the stack</span><span><b>NOTICE</b> Inkbit never DMs you to verify your wallet</span><span><b>UNCHARTED ISLE</b> All 4,444 Wild Ones claimed · trading posts busy</span><span><b>THE CAPITAL</b> All 2,468 citizens moved in overnight</span><span><b>NEW</b> Rankings and the Kingdom Board are open</span><span><b>INK STREET</b> The Inkbit Exchange is hiring 7,777 brokers until Oct 31, 12:00</span><span><b>PET MEADOWS</b> The first pets change hands</span><span><b>MARKET</b> A Whale was seen scooping the dip with a spoon</span><span><b>PET MEADOWS</b> Census closes at 5,983 · one Golden Dragon registered</span><span><b>UNCHARTED ISLE</b> 4,444 Wild Ones · ten tribes · the First Ink</span><span><b>DANGER ZONE</b> Quarantine breaks Oct 30, 20:00</span><span><b>APEPIXEL CITY</b> 11 Misprints still hiding in the stack</span><span><b>NOTICE</b> Inkbit never DMs you to verify your wallet</span></div></div>
+
+<main class="wrap">
+  <div class="cpage" style="padding-top:26px">
+    <div>
+      <div class="kicker">Town square</div>
+      <h1 class="ptitle">The Kingdom Board</h1>
+      <p class="dek">Pick a nickname and join the conversation. Ideas for events, favourite characters, theories about the reveal: everything Inkbit is welcome.</p>
+      <form id="boardForm" class="bform" autocomplete="off">
+        <label>Nickname<input id="bName" name="name" maxlength="24" required placeholder="e.g. PixelFan"></label>
+        <label>Message<textarea id="bText" name="text" maxlength="400" rows="3" required placeholder="Say something to the Kingdom…"></textarea></label>
+        <input name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <div class="brow"><span class="left"><span id="bLeft">400</span> characters left</span><button class="btn" type="submit">Post</button></div>
+        <p id="bMsg" class="bmsg" role="status"></p>
+      </form>
+      <ul id="boardList" class="board"><li class="empty">Loading…</li></ul>
+    </div>
+    <aside class="side">
+      <h2 style="font-family:var(--px);font-size:13px;margin:0 0 12px">BOARD RULES</h2>
+      <ul class="rules">
+        <li>Be kind. No insults, no spam.</li>
+        <li>No links. Links are blocked to keep scam sites out.</li>
+        <li>Never post a seed phrase, private key or wallet password. Nobody from Inkbit will ever ask for one.</li>
+        <li>Don't share personal details like your phone number or address.</li>
+        <li>Messages are public. Inkbit News keeps a record of the board to plan community events, and may remove messages that break the rules.</li>
+      </ul>
+      <p class="note">Ideas that get people talking may turn into real Inkbit events. Watch the front page.</p>
+    </aside>
+  </div>
+</main>
+<script src="board.js"></script>
+<footer class="wrap">
+  <div class="notice"><b>Public notice.</b> Inkbit will never DM you to "verify" or "sync" your wallet, and never asks for a seed phrase. Only mint from the official OpenSea links on this site. Everything here is art and story, not financial advice.</div>
+  <div class="foot"><div><a data-link="x" href="#">X @InkbitApes</a><a data-link="apes" href="#">Inkbit Apes</a><a data-link="cards" href="#">Inkbit Press Cards</a><a data-link="world" href="#">Inkbit World</a><a data-link="pets" href="#">Inkbit Pets</a><a data-link="zombies" href="#">Inkbit Zombie Punks</a><a data-link="wild" href="#">Inkbit Wild Ones</a><a data-link="brokers" href="#">Inkbit Brokers</a></div><div>© Inkbit Kingdom · Inkbit News</div></div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
