@@ -22,11 +22,14 @@
   }
   async function load() {
     try {
-      const r = await fetch('/api/board', { cache: 'no-store' }); const j = await r.json();
-      if (!r.ok) throw new Error(j.error || 'offline');
+      const r = await fetch('/api/board', { cache: 'no-store' });
+      if (r.status === 404) throw new Error('code404');
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(r.status === 503 ? 'code503' : 'code' + r.status);
       render(j.messages || []); form.classList.remove('off');
     } catch (e) {
-      list.innerHTML = '<li class="empty">The board is resting right now. Please come back a little later.</li>'; form.classList.add('off');
+      const why = { code404: 'board system not uploaded (api folder missing)', code503: 'storage not connected yet' }[e.message] || e.message;
+      list.innerHTML = '<li class="empty">The board is resting right now. Please come back a little later.<br><small style="opacity:.6">(' + why.replace(/[<>&]/g, '') + ')</small></li>'; form.classList.add('off');
     }
   }
   textIn.addEventListener('input', () => { left.textContent = 400 - textIn.value.length; });
