@@ -6,7 +6,8 @@ INKBIT NEWS - วิธีอัพขึ้น GitHub / Vercel (มีบอร
   rank.html  + rank.js       หน้าแรงค์ (ข้อมูลสดจาก OpenSea + สรุปประจำวัน)
   board.html + board.js      บอร์ดพูดคุย (ตั้งชื่อเล่นแล้วพิมพ์คุยได้)
   backoffice.html + backoffice.js   หลังบ้าน (ไม่มีลิงก์ในเว็บ ต้องใส่รหัสถึงเข้าได้)
-  api\  board.js  admin.js  rank.js  _redis.js   ระบบหลังบ้านที่ Vercel รันให้
+  api\  board.js  admin.js  rank.js  _store.js  _redis.js   ระบบหลังบ้านที่ Vercel รันให้
+  supabase-board.sql         คำสั่ง SQL สร้างตารางบอร์ดใน Supabase (รันครั้งเดียว)
   style.css  site.js  img\    หน้าตา + ภาพ
 
 ขั้นที่ 1 อัพไฟล์ (ทับของเดิม)
@@ -14,10 +15,21 @@ INKBIT NEWS - วิธีอัพขึ้น GitHub / Vercel (มีบอร
  2) Add file > Upload files > ลากทุกไฟล์ + โฟลเดอร์ img + โฟลเดอร์ api (ลากทั้งโฟลเดอร์ได้เลย)
  3) Commit changes
 
-ขั้นที่ 2 เปิดที่เก็บข้อความบอร์ด (ฟรี ทำครั้งเดียว)
- 1) Vercel > เข้าโปรเจกต์เว็บ > แท็บ Storage > Create Database
- 2) เลือก Upstash (Redis / "Upstash for Redis") > แพลนฟรี > Create
- 3) กด Connect to Project เลือกโปรเจกต์เว็บนี้ (Vercel จะใส่ค่าเชื่อมต่อให้เอง)
+ขั้นที่ 2 เปิดที่เก็บข้อความบอร์ดใน Supabase (ทำครั้งเดียว)
+ 1) Supabase > เปิดโปรเจกต์ > SQL Editor > New query
+ 2) เปิดไฟล์ supabase-board.sql คัดลอกทั้งหมดไปวาง > กด Run  (รันซ้ำได้ ไม่พัง)
+ 3) Supabase > Project Settings > API (หรือ API Keys) คัดลอก 2 ค่า:
+      Project URL                      เช่น https://xxxx.supabase.co
+      service_role key / Secret key    (ขึ้นต้น eyJ... หรือ sb_secret_...)  ห้ามใช้ anon/publishable key
+ 4) Vercel > โปรเจกต์ > Settings > Environment Variables > Add
+      SUPABASE_URL               = Project URL
+      SUPABASE_SERVICE_ROLE_KEY  = service_role / Secret key
+    (ถ้าเชื่อม Supabase ผ่าน Vercel Integration ค่าพวกนี้จะใส่ให้อัตโนมัติ)
+ 5) Deployments > ... > Redeploy
+ หมายเหตุ: คีย์ service_role ห้ามใส่ในไฟล์หรือส่งให้ใคร เก็บไว้ใน Vercel เท่านั้น
+          ตารางเปิด RLS ไว้ คนนอกอ่าน/เขียนตรงๆ ไม่ได้ ต้องผ่าน /api ของเว็บเท่านั้น
+          ถ้ายังไม่ได้ใส่ค่า Supabase ระบบจะใช้ Upstash (ถ้ามี) แทนอัตโนมัติ
+ ดูข้อมูลใน Supabase: Table Editor > board_messages (ข้อความ) / board_log (บันทึกรายวัน)
 
 ขั้นที่ 3 ตั้งรหัสหลังบ้าน + คีย์ OpenSea (ห้ามเขียนลงไฟล์ ให้ใส่ใน Vercel เท่านั้น)
  Vercel > โปรเจกต์ > Settings > Environment Variables > Add

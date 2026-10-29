@@ -1,7 +1,7 @@
 // Inkbit News board: GET = latest messages, POST = new message.
 // Every message is also appended to a private daily log (log:YYYY-MM-DD) that only /api/admin can read.
 const crypto = require('crypto');
-const { ready, cmd, pipe, bkk } = require('./_redis');
+const { store, bkk } = require('./_store');
 
 const LINK = /(https?:\/\/|www\.|t\.me\/|discord\.gg|bit\.ly|\b[a-z0-9-]+\.(com|io|xyz|gg|me|net|org|app|link|site|top|club|online|live|co)\b)/i;
 const RESERVED = /(admin|official|inkbit|moderator|\bmod\b|support|opensea|team)/i;
@@ -9,11 +9,10 @@ const clean = s => String(s || '').replace(/[\u0000-\u001f\u007f]/g, ' ').replac
 
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-  if (!ready()) return res.status(503).json({ error: 'The board is not connected to storage yet.' });
+  if (!store.ready()) return res.status(503).json({ error: 'The board is not connected to storage yet.' });
   try {
     if (req.method === 'GET') {
-      const raw = await cmd('LRANGE', 'board:recent', 0, 99);
-      return res.status(200).json({ messages: raw.map(x => JSON.parse(x)) });
+      return res.status(200).json({ messages: await store.recent(100) });
     }
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
@@ -28,19 +27,15 @@ module.exports = async (req, res) => {
 
     const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
     const who = crypto.createHash('sha256').update(ip + (process.env.ADMIN_KEY || '')).digest('hex').slice(0, 12);
-    const ok = await cmd('SET', `rl:${who}`, '1', 'EX', 8, 'NX');
+    const ok = await store.rateLimit(who, 8);
     if (!ok) return res.status(429).json({ error: 'Slow down a little: one message every few seconds.' });
 
     const now = new Date(), { day, time } = bkk(now);
     const msg = { id: now.getTime().toString(36) + crypto.randomBytes(3).toString('hex'), t: now.toISOString(), name, text };
-    await pipe([
-      ['LPUSH', 'board:recent', JSON.stringify(msg)],
-      ['LTRIM', 'board:recent', 0, 299],
-      ['RPUSH', `log:${day}`, `[${time}] ${name} (#${who.slice(0, 6)}): ${text}`],
-      ['SADD', 'log:days', day],
-    ]);
+    await store.add(msg, who, day, `[${time}] ${name} (#${who.slice(0, 6)}): ${text}`);
     return res.status(200).json({ ok: true, message: msg });
   } catch (e) {
+    console.error('board', e);
     return res.status(500).json({ error: 'Board error, please try again.' });
   }
 };

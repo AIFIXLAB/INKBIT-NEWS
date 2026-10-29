@@ -11,8 +11,15 @@
   }
   async function load() {
     status.textContent = 'Loading…';
-    const r = await call(); const j = await r.json().catch(() => ({}));
-    if (!r.ok) { status.textContent = j.error || 'Error'; out.innerHTML = ''; return; }
+    if (/[^\x20-\x7e]/.test(key)) { status.textContent = 'The key has non-English characters. Switch your keyboard to English (EN) and type it again.'; return; }
+    let r, j;
+    try {
+      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 15000);
+      r = await call('', { signal: ctl.signal }); clearTimeout(t);
+      j = await r.json().catch(() => ({}));
+    } catch (e) { status.textContent = 'Could not reach the server (' + (e.name === 'AbortError' ? 'timed out' : e.message) + '). Try again.'; return; }
+    if (!r.ok) { status.textContent = (j.error || 'Error') + ' (code ' + r.status + ')'; out.innerHTML = ''; return; }
+    if (!Array.isArray(j.days)) { status.textContent = 'Unexpected reply from the server. Redeploy the site and try again.'; return; }
     try { sessionStorage.setItem('inkbit-admin', key); } catch (e) {}
     status.textContent = `${j.days.length} day(s) of logs`;
     let h = '<h2>DAILY LOGS</h2><p><button data-all>Download every day (.txt)</button></p><table class="rank"><thead><tr><th>Day (GMT+7)</th><th>Lines</th><th></th></tr></thead><tbody>';
