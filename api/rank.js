@@ -4,7 +4,8 @@
 const COLLS = [
   ['apes', 'Inkbit Apes', 'inkbit-apes'], ['cards', 'Inkbit Press Cards', 'inkbit-press-cards'], ['world', 'Inkbit World', 'inkbit-world'],
   ['pets', 'Inkbit Pets', 'inkbit-pets'], ['zombies', 'Inkbit Zombie Punks', 'inkbit-zombie-punks'], ['wild', 'Inkbit Wild Ones', 'inkbit-wild-ones'],
-  ['brokers', 'Inkbit Brokers', 'inkbit-brokers'],
+  ['brokers', 'Inkbit Brokers', 'inkbit-brokers'], ['fighter', 'Inkbit Fighter', 'inkbit-fighter'], ['neon', 'Inkbit Neon City', 'inkbit-neon-city'],
+  ['ghost', 'Inkbit Ghost Kingdom', 'inkbit-ghost-kingdom'], ['shinobi', 'Inkbit Shinobi', 'inkbit-shinobi'], ['tides', 'Inkbit Tides', 'inkbit-tides'],
 ];
 const API = 'https://api.opensea.io/api/v2';
 

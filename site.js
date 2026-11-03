@@ -9,12 +9,13 @@ const LINKS = {
  "brokers": "https://opensea.io/collection/inkbit-brokers",
  "fighter": "https://opensea.io/collection/inkbit-fighter",
  "neon": "https://opensea.io/collection/inkbit-neon-city",
- "ghost": "https://opensea.io/collection/inkbit-ghost-kingdom"
+ "ghost": "https://opensea.io/collection/inkbit-ghost-kingdom",
+ "shinobi": "https://opensea.io/collection/inkbit-shinobi",
+ "tides": "https://opensea.io/collection/inkbit-tides"
 };
 const DROPS = {
  "apes": {
-  "start": "2026-10-29T16:54:00+07:00",
-  "end": "2026-11-02T16:54:00+07:00"
+  "label": "Mint closed"
  },
  "cards": {
   "label": "Minted out"
@@ -23,33 +24,36 @@ const DROPS = {
   "label": "Revealed"
  },
  "pets": {
-  "start": "2026-10-26T21:15:00+07:00",
-  "end": "2026-10-27T21:15:00+07:00"
+  "label": "Mint closed"
  },
  "zombies": {
-  "start": "2026-10-30T20:00:00+07:00",
-  "end": "2026-11-06T20:00:00+07:00"
+  "label": "Minted out"
  },
  "wild": {
   "label": "Minted out"
  },
  "brokers": {
-  "start": "2026-10-28T12:00:00+07:00",
-  "end": "2026-10-31T12:00:00+07:00"
+  "start": "2026-11-01T11:56:00+07:00",
+  "end": "2026-11-06T11:56:00+07:00"
  },
  "fighter": {
   "label": "Revealed"
  },
  "neon": {
-  "start": "2026-10-29T16:05:00+07:00",
-  "end": "2026-11-08T16:05:00+07:00"
+  "start": "2026-11-01T11:43:00+07:00",
+  "end": "2026-11-04T11:43:00+07:00"
  },
  "ghost": {
   "start": "2026-10-30T20:00:00+07:00",
-  "end": "2026-10-31T05:00:00+07:00"
- }
+  "end": "2026-11-04T20:00:00+07:00"
+ },
+ "shinobi": {
+  "start": "2026-11-03T20:36:00+07:00",
+  "end": "2026-11-05T20:36:00+07:00"
+ },
+ "tides": {}
 };
-const EVENTS = [["2026-10-29T08:00:00+07:00", "Inkbit World and Wild Ones are minted out", "Reveal dates to be announced on Inkbit News"], ["2026-10-26T21:15:00+07:00", "Inkbit Pets mint opens", "Free \u00b7 5 per wallet"], ["2026-10-27T21:15:00+07:00", "Inkbit Pets mint closes", "5,983 pets registered"], ["2026-10-27T20:00:00+07:00", "Inkbit Wild Ones mint opens", "Free \u00b7 3 per wallet"], ["2026-10-28T12:00:00+07:00", "Inkbit Brokers mint opens", "Free \u00b7 5 per wallet \u00b7 7,777 brokers"], ["2026-10-28T20:00:00+07:00", "Inkbit World mint opens", "\u2248 1 THB \u00b7 3 per wallet \u00b7 2,468 citizens"], ["2026-10-29T16:54:00+07:00", "The old printer starts again", "Inkbit Apes mint reopens \u00b7 \u2248 1 THB \u00b7 5 per wallet"], ["2026-10-29T20:00:00+07:00", "Inkbit Fighter mint opens", "First 2,000 free \u00b7 3 per wallet \u00b7 10 days"], ["2026-10-30T10:00:00+07:00", "Inkbit Fighter minted out and revealed", "Grand Champion #536 \u00b7 1,841 owners"], ["2026-11-02T16:54:00+07:00", "Inkbit Apes mint closes", "Misprints revealed after mint"], ["2026-10-30T20:00:00+07:00", "The ghost parade begins", "Inkbit Ghost Kingdom \u00b7 free for 30 min, then hourly price steps"], ["2026-10-31T05:00:00+07:00", "The ghost parade ends at dawn", "Ranks revealed after mint"], ["2026-10-29T16:05:00+07:00", "Inkbit Neon City mint opens", "First 1,000 free \u00b7 3 per wallet \u00b7 10 days"], ["2026-11-08T16:05:00+07:00", "Inkbit Neon City mint closes", "Ranks revealed after mint"], ["2026-10-30T20:00:00+07:00", "The quarantine breaks tonight", "Inkbit Zombie Punks mint opens \u00b7 \u2248 3 THB \u00b7 10 per wallet"], ["2026-10-31T12:00:00+07:00", "Inkbit Brokers mint closes", "Ranks revealed after mint"], ["2026-11-06T20:00:00+07:00", "Zombie Punks mint closes", "Infection levels revealed after mint"]];
+const EVENTS = [["2026-10-26T21:15:00+07:00", "Inkbit Pets mint opens", "Free \u00b7 5,983 pets registered"], ["2026-10-28T20:00:00+07:00", "Inkbit World mint opens", "Minted out overnight"], ["2026-10-29T08:00:00+07:00", "Inkbit World and Wild Ones are minted out", "Wild Ones reveal date to be announced"], ["2026-10-29T19:30:00+07:00", "The government of the Capital is sworn in", "Governor #1616"], ["2026-10-30T10:00:00+07:00", "Inkbit Fighter minted out and revealed", "Grand Champion #536"], ["2026-10-30T20:00:00+07:00", "The ghost parade begins", "Inkbit Ghost Kingdom"], ["2026-10-30T20:00:00+07:00", "The quarantine breaks", "Zombie Punks \u00b7 now minted out"], ["2026-11-02T16:54:00+07:00", "Inkbit Apes reprint closes", "167 printed"], ["2026-11-03T20:36:00+07:00", "The Ink Village opens its gate", "Inkbit Shinobi \u00b7 free \u00b7 10 per wallet"], ["2026-11-04T11:43:00+07:00", "Inkbit Neon City mint closes", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-04T20:00:00+07:00", "The ghost parade ends", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-05T20:36:00+07:00", "The Ink Village gate closes", "Ninja ranks revealed after mint"], ["2026-11-06T11:56:00+07:00", "Inkbit Brokers final round closes", "Ranks revealed after mint"], [null, "Inkbit Tides mint", "Date to be announced on Inkbit News"]];
 const now = () => new Date();
 const fmt = d => d.toLocaleString("en-GB",{timeZone:"Asia/Bangkok",day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
 const el = document.getElementById("today");
