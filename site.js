@@ -11,7 +11,8 @@ const LINKS = {
  "neon": "https://opensea.io/collection/inkbit-neon-city",
  "ghost": "https://opensea.io/collection/inkbit-ghost-kingdom",
  "shinobi": "https://opensea.io/collection/inkbit-shinobi",
- "tides": "https://opensea.io/collection/inkbit-tides"
+ "tides": "https://opensea.io/collection/inkbit-tides",
+ "vote": "https://opensea.io/collection/election-night-434895798"
 };
 const DROPS = {
  "apes": {
@@ -48,12 +49,17 @@ const DROPS = {
   "end": "2026-11-04T20:00:00+07:00"
  },
  "shinobi": {
-  "start": "2026-11-03T20:36:00+07:00",
-  "end": "2026-11-05T20:36:00+07:00"
+  "label": "Minted out"
  },
- "tides": {}
+ "tides": {
+  "label": "Minted out"
+ },
+ "vote": {
+  "start": "2026-11-04T18:25:00+07:00",
+  "end": "2026-11-07T18:25:00+07:00"
+ }
 };
-const EVENTS = [["2026-10-26T21:15:00+07:00", "Inkbit Pets mint opens", "Free \u00b7 5,983 pets registered"], ["2026-10-28T20:00:00+07:00", "Inkbit World mint opens", "Minted out overnight"], ["2026-10-29T08:00:00+07:00", "Inkbit World and Wild Ones are minted out", "Wild Ones reveal date to be announced"], ["2026-10-29T19:30:00+07:00", "The government of the Capital is sworn in", "Governor #1616"], ["2026-10-30T10:00:00+07:00", "Inkbit Fighter minted out and revealed", "Grand Champion #536"], ["2026-10-30T20:00:00+07:00", "The ghost parade begins", "Inkbit Ghost Kingdom"], ["2026-10-30T20:00:00+07:00", "The quarantine breaks", "Zombie Punks \u00b7 now minted out"], ["2026-11-02T16:54:00+07:00", "Inkbit Apes reprint closes", "167 printed"], ["2026-11-03T20:36:00+07:00", "The Ink Village opens its gate", "Inkbit Shinobi \u00b7 free \u00b7 10 per wallet"], ["2026-11-04T11:43:00+07:00", "Inkbit Neon City mint closes", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-04T20:00:00+07:00", "The ghost parade ends", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-05T20:36:00+07:00", "The Ink Village gate closes", "Ninja ranks revealed after mint"], ["2026-11-06T11:56:00+07:00", "Inkbit Brokers final round closes", "Ranks revealed after mint"], [null, "Inkbit Tides mint", "Date to be announced on Inkbit News"]];
+const EVENTS = [["2026-10-26T21:15:00+07:00", "Inkbit Pets mint opens", "Free \u00b7 5,983 pets registered"], ["2026-10-28T20:00:00+07:00", "Inkbit World mint opens", "Minted out overnight"], ["2026-10-29T08:00:00+07:00", "Inkbit World and Wild Ones are minted out", "Wild Ones reveal date to be announced"], ["2026-10-29T19:30:00+07:00", "The government of the Capital is sworn in", "Governor #1616"], ["2026-10-30T10:00:00+07:00", "Inkbit Fighter minted out and revealed", "Grand Champion #536"], ["2026-10-30T20:00:00+07:00", "The ghost parade begins", "Inkbit Ghost Kingdom"], ["2026-10-30T20:00:00+07:00", "The quarantine breaks", "Zombie Punks \u00b7 now minted out"], ["2026-11-02T16:54:00+07:00", "Inkbit Apes reprint closes", "167 printed"], ["2026-11-03T20:36:00+07:00", "The Ink Village opens its gate", "Inkbit Shinobi \u00b7 free \u00b7 10 per wallet"], ["2026-11-04T11:43:00+07:00", "Inkbit Neon City mint closes", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-04T20:00:00+07:00", "The ghost parade ends", "Free until then \u00b7 ranks revealed after mint"], ["2026-11-05T20:36:00+07:00", "The Ink Village gate closes", "Ninja ranks revealed after mint"], ["2026-11-06T11:56:00+07:00", "Inkbit Brokers final round closes", "Ranks revealed after mint"], ["2026-11-03T21:00:00+07:00", "Inkbit Tides card packs open", "Minted out \u00b7 547 owners"], ["2026-11-04T18:25:00+07:00", "Election Night party opens", "Free \u00b7 10 per wallet \u00b7 4,444 supporters"], ["2026-11-07T18:25:00+07:00", "Election Night mint closes", "Revealed after mint"]];
 const now = () => new Date();
 const fmt = d => d.toLocaleString("en-GB",{timeZone:"Asia/Bangkok",day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
 const el = document.getElementById("today");
