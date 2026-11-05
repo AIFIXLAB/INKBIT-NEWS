@@ -111,4 +111,5 @@ ul.board{list-style:none;padding:0;margin:0}ul.board li{border-bottom:1px solid 
 .steps li:before{content:counter(st);font-family:var(--px);font-size:13px;background:var(--ink);color:var(--paper);text-align:center;padding:8px 0}
 .example{border:3px solid var(--ink);background:var(--paper2);padding:16px 18px;font-size:17px}
 @media (max-width:900px){.rulebook{grid-template-columns:minmax(0,1fr)}.kv td:first-child{white-space:normal;width:34%}.toc{position:static}.play3,.kw,.el{grid-template-columns:1fr}}
+.teamtag{font-family:var(--mono);font-size:11px;font-weight:700;background:var(--toxic);color:var(--ink);padding:2px 6px;border:1.5px solid var(--ink)}ul.board li.team{background:rgba(123,210,58,.12);padding-left:10px;padding-right:10px}
 .logview{white-space:pre-wrap;background:var(--paper2);border:2px solid var(--ink);padding:12px;font-size:13px;max-height:420px;overflow:auto}

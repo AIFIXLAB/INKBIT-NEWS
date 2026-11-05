@@ -16,7 +16,8 @@
       const li = document.createElement('li');
       li.innerHTML = '<div class="bm-h"><span class="dot"></span><b></b><time></time></div><p></p>';
       li.querySelector('.dot').style.background = `hsl(${hue(m.name)},55%,45%)`;
-      li.querySelector('b').textContent = m.name; li.querySelector('time').textContent = fmt(m.t); li.querySelector('p').textContent = m.text;
+      li.querySelector('b').textContent = m.name;
+      if (m.team === true) { const t = document.createElement('span'); t.className = 'teamtag'; t.textContent = '✔ Team'; li.querySelector('b').after(t); li.classList.add('team'); } li.querySelector('time').textContent = fmt(m.t); li.querySelector('p').textContent = m.text;
       list.appendChild(li);
     }
   }

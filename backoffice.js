@@ -24,9 +24,19 @@
     status.textContent = `${j.days.length} day(s) of logs`;
     let h = '<h2>DAILY LOGS</h2><p><button data-all>Download every day (.txt)</button></p><table class="rank"><thead><tr><th>Day (GMT+7)</th><th>Lines</th><th></th></tr></thead><tbody>';
     for (const d of j.days) h += `<tr><td>${esc(d.day)}</td><td>${d.lines}</td><td><button data-view="${esc(d.day)}">View</button> <button data-dl="${esc(d.day)}">Download .txt</button></td></tr>`;
-    h += '</tbody></table><pre id="aView" class="logview"></pre><h2>ON THE BOARD NOW</h2><ul class="board">';
-    for (const m of j.recent) h += `<li><div class="bm-h"><b>${esc(m.name)}</b><time>${esc(new Date(m.t).toLocaleString('en-GB', { timeZone: 'Asia/Bangkok' }))}</time> <button data-del="${esc(m.id)}">Remove</button></div><p>${esc(m.text)}</p></li>`;
+    h += '</tbody></table><pre id="aView" class="logview"></pre>';
+    h += '<h2>POST AS TEAM</h2><form id="tForm" class="bform" style="max-width:640px"><label>Name<input id="tName" maxlength="24" value="CHIBICITIZEN · Inkbit"></label><label>Message<textarea id="tText" maxlength="400" rows="4"></textarea></label><div class="brow"><span>Shows a ✔ Team badge nobody else can fake</span><button class="btn" type="submit">Post as team</button></div><p id="tMsg" class="bmsg"></p></form>';
+    h += '<h2>ON THE BOARD NOW</h2><ul class="board">';
+    for (const m of j.recent) h += `<li><div class="bm-h"><b>${esc(m.name)}</b>${m.team === true ? ' <span class="teamtag">✔ Team</span>' : ''}<time>${esc(new Date(m.t).toLocaleString('en-GB', { timeZone: 'Asia/Bangkok' }))}</time> <button data-del="${esc(m.id)}">Remove</button></div><p>${esc(m.text)}</p></li>`;
     out.innerHTML = h + '</ul>';
+    document.getElementById('tForm').addEventListener('submit', async ev => {
+      ev.preventDefault(); const tm = document.getElementById('tMsg'); tm.textContent = 'Posting…'; tm.className = 'bmsg';
+      const r = await fetch('/api/board', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+        body: JSON.stringify({ name: document.getElementById('tName').value.trim(), text: document.getElementById('tText').value.trim() }) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok) { tm.textContent = 'Posted with ✔ Team badge.'; tm.className = 'bmsg ok'; document.getElementById('tText').value = ''; setTimeout(load, 800); }
+      else { tm.textContent = (j.error || 'Error') + ' (code ' + r.status + ')'; tm.className = 'bmsg bad'; }
+    });
   }
   out.addEventListener('click', async e => {
     const b = e.target.closest('button'); if (!b) return;

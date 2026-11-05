@@ -20,18 +20,22 @@ module.exports = async (req, res) => {
     const name = clean(body.name).slice(0, 24), text = clean(body.text);
     if (body.website) return res.status(200).json({ ok: true });           // honeypot: bots fill hidden field
     if (name.length < 2) return res.status(400).json({ error: 'Pick a name with at least 2 characters.' });
-    if (RESERVED.test(name)) return res.status(400).json({ error: 'That name is reserved. Please pick another one.' });
+    // Team posts: only accepted with the private ADMIN_KEY (sent from the back office, never from the public form)
+    const k = String(req.headers['x-admin-key'] || ''), A = process.env.ADMIN_KEY || '';
+    const team = !!A && k.length === A.length && crypto.timingSafeEqual(Buffer.from(k), Buffer.from(A));
+    if (RESERVED.test(name) && !team) return res.status(400).json({ error: 'That name is reserved. Please pick another one.' });
     if (text.length < 1) return res.status(400).json({ error: 'Write something first.' });
     if (text.length > 400) return res.status(400).json({ error: 'Max 400 characters per message.' });
-    if (LINK.test(text) || LINK.test(name)) return res.status(400).json({ error: 'Links are not allowed on the board (this keeps scam links out).' });
+    if (!team && (LINK.test(text) || LINK.test(name))) return res.status(400).json({ error: 'Links are not allowed on the board (this keeps scam links out).' });
 
     const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
     const who = crypto.createHash('sha256').update(ip + (process.env.ADMIN_KEY || '')).digest('hex').slice(0, 12);
-    const ok = await store.rateLimit(who, 8);
+    const ok = team || await store.rateLimit(who, 8);
     if (!ok) return res.status(429).json({ error: 'Slow down a little: one message every few seconds.' });
 
     const now = new Date(), { day, time } = bkk(now);
     const msg = { id: now.getTime().toString(36) + crypto.randomBytes(3).toString('hex'), t: now.toISOString(), name, text };
+    if (team) msg.team = true;
     await store.add(msg, who, day, `[${time}] ${name} (#${who.slice(0, 6)}): ${text}`);
     return res.status(200).json({ ok: true, message: msg });
   } catch (e) {
